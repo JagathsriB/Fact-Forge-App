@@ -1,0 +1,33 @@
+## How the Trust Score is Calculated
+
+The Trust Score is a metric designed to assess the credibility of the most relevant web source found during the plagiarism check. It does not evaluate the user's text itself, but rather the source it is being compared against. The score is a weighted average of three different automated checks.
+
+---
+
+### 1. Machine Learning URL Classification
+
+The system uses a machine learning model to predict if the source's URL belongs to a known category of malicious or benign websites.
+
+* **Model:** A **`RandomForestClassifier`** was trained on a dataset of thousands of URLs to analyze its structure.
+
+---
+
+### 2. Google Safe Browsing Check
+
+The URL is checked against Google's real-time database of unsafe web resources.
+
+* **API:** It queries the **Google Safe Browsing API** to identify websites known to host malware, unwanted software, or engage in social engineering.
+
+---
+
+### 3. PhishTank Database Check
+
+The system also cross-references the URL with a community-maintained database of known phishing sites.
+
+* **Source:** It checks against the **PhishTank** database, providing an additional layer of security by flagging URLs verified as malicious by the community.
+
+---
+
+### Final Score Calculation
+
+The verdicts from these three checks are combined using a weighted formula to produce the final **Trust Score**, giving a single, easy-to-understand rating of the source's likely safety and credibility.

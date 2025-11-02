@@ -1,0 +1,27 @@
+## How Our Language Analysis System Works
+
+This tool uses a two-pronged approach to analyze text: a specialized **Bias Detector** and a general-purpose **Loaded Language Analyzer**.
+
+---
+### 1. Bias Detection: The Specialist Model
+
+The core of the system is a specialized AI model, a fine-tuned **DeBERTa V3-Large**, which acts as an expert in identifying implicit social bias.
+
+* **Training:** This model was trained on thousands of examples of both biased and neutral text to learn the subtle patterns, word choices, and contexts that signal stereotypes or coded language.
+* **Function:** Its sole purpose is to provide a focused verdict on whether the text is **'Biased'** or **'Not-detected'**, based on a calculated confidence score.
+
+---
+### 2. Loaded Language Detection: The Heuristic Panel
+
+This is a broader check that functions like a panel of different linguistic experts. It looks for various signs of emotional manipulation or rhetorical devices, not just social bias. The final "Loaded Language" verdict is **'Yes'** if *any one* of the following signals is detected:
+
+* **Emotional Content:** The presence of strong, high-arousal emotions like anger, fear, or disgust is detected using models from `pysentimiento` and `NRCLex`.
+* **Irony & Sarcasm:** The system checks if the text is likely to be ironic using `pysentimiento`'s specialized irony detector.
+* **Leading Questions:** The grammatical structure is analyzed with `spaCy` to identify questions framed to presuppose an answer.
+* **Jargon & Euphemisms:** A custom dictionary is used to flag common corporate or political jargon designed to obscure meaning.
+* **Bias Model Verdict:** The verdict from the specialist Bias Detector is also used as a key signal. If the DeBERTa model flags the text as biased, the language is considered loaded by definition.
+
+---
+### System Workflow
+
+The input text is analyzed by both components simultaneously to produce the final verdicts.

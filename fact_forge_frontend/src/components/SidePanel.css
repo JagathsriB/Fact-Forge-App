@@ -1,0 +1,173 @@
+/* --- FIX: Styles to ensure the icon wrapper is a full button --- */
+.icon {
+  width: 100%; /* Make the wrapper take the full available width */
+  padding: 18px 0; /* Add generous vertical padding to increase click height */
+  display: flex; /* Use flexbox to easily center the icon inside */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px; /* Add rounded corners for the hover effect */
+}
+
+/* Add a visual indicator on hover for better user feedback */
+.icon:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Style for the active icon */
+.icon.active {
+  color: #e03975; /* Changed to pink color for the active icon */
+  background-color: rgba(224, 57, 117, 0.15); /* Faint pink background */
+}
+/* --- Original Styles --- */
+.sidepanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+  /* Add pointer-events fix for when panel is collapsed */
+  pointer-events: none;
+}
+
+.sidepanel.expanded {
+  pointer-events: auto;
+}
+
+.title-gradient {
+  background-image: linear-gradient(90deg, #e03975, #d9a406);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.components-bar {
+  background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid #2d2d2d;
+  width: 45px;
+  transition: width 0.4s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto; /* Make this bar clickable */
+}
+
+.sidepanel.expanded .components-bar {
+  width: 65px;
+}
+
+.components-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+  transform-origin: center;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  font-size: 1.1em;
+}
+
+.sidepanel.expanded .components-label {
+  opacity: 0;
+}
+
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px; /* Adjust spacing */
+  padding-bottom: 10px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.sidepanel.expanded .icon-list {
+  opacity: 1;
+}
+
+.toggle-bar {
+  width: 20px;
+  background: #d9a406;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 1px 0 8px rgba(0, 0, 0, 0.3);
+  pointer-events: auto; /* Make this bar clickable */
+}
+
+.toggle-bar svg {
+  color: #000;
+  font-size: 18px;
+  stroke-width: 3;
+}
+
+.panel {
+  width: 70vw;
+  max-width: 900px;
+  background: #1e1e1e;
+  color: #e2e8f0;
+  padding: 20px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  visibility: hidden;
+  pointer-events: auto; /* Make the panel itself interactive */
+}
+
+.panel.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* --- Styles for Markdown Content --- */
+.panel-content h2,
+.panel-content h3 {
+  color: #d9a406; /* Gold for headers */
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.panel-content p,
+.panel-content li {
+  line-height: 1.7;
+  color: #cbd5e1; /* Slightly softer text color */
+}
+
+.panel-content strong {
+  color: #e03975; /* Magenta for bolded text */
+}
+
+.panel-content code {
+  background-color: #333;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.panel-content hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 20px 0;
+}

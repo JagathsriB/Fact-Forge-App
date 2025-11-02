@@ -1,0 +1,158 @@
+/* General Styles */
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  /* New gradient background */
+  background-color: #111111;
+  background-image: radial-gradient(at 95% 5%, hsla(339, 100%, 55%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 5% 95%, hsla(53, 100%, 50%, 0.15) 0px, transparent 50%);
+  color: #e2e8f0;
+  /* Soft white text */
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scrollbar */
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  transition: all 0.4s ease-in-out;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  flex-grow: 1;
+  /* CORRECT default margin for collapsed sidebar (45px + 20px) */
+  margin-left: 65px;
+  padding: 20px 40px;
+  transition: margin-left 0.4s ease-in-out;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- ADDED CORRECT RESPONSIVE RULE for expanded state --- */
+.app-container.app-expanded .main-content {
+  /*
+    Calculate the new margin:
+    Expanded components-bar (65px) + toggle-bar (20px) + panel width (70vw)
+  */
+  margin-left: calc(85px + 70vw);
+}
+
+/* On larger screens, use the panel's max-width for a fixed margin */
+@media (min-width: 1380px) {
+  .app-container.app-expanded .main-content {
+    margin-left: 985px; /* 65px + 20px + 900px */
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  /* Max width for content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Gradient title */
+.gradient-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff4081, #ffcc00);
+  /* Pink and yellow gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+.input-textarea {
+  width: 90%;
+  min-height: 180px;
+  border-radius: 12px;
+  border: 2px solid #ff4081;
+  /* Pink border */
+  padding: 15px;
+  font-size: 1rem;
+  resize: vertical;
+  background-color: #1e1e1e;
+  /* Neutral dark grey background */
+  color: #e2e8f0;
+  /* Soft white text */
+  transition: all 0.3s ease;
+}
+
+.input-textarea:focus {
+  outline: none;
+  border-color: #ffcc00;
+  /* Yellow focus color */
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.25);
+}
+
+.analyze-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #ff4081, #ffcc00);
+  /* Pink and yellow gradient */
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.analyze-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+}
+
+.analyze-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Results & Cards */
+.results {
+  margin-top: 40px;
+  width: 90%;
+  text-align: left;
+}
+
+.card {
+  background: #1e1e1e;
+  /* Neutral dark grey card background */
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff4081;
+  /* Pink accent border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  /* Deeper shadow */
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffcc00;
+  /* Yellow for headers */
+
+  /* --- THIS IS THE FIX --- */
+  font-size: 1.6rem; /* This makes the card titles smaller than the main title */
+}
+
+.error-text {
+  color: #ff4d4f;
+  /* Error red */
+  font-weight: bold;
+  margin-top: 20px;
+}
+

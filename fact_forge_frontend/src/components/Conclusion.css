@@ -1,0 +1,51 @@
+.conclusion-card {
+  background: #1f1f1f;
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.conclusion-title {
+  background: linear-gradient(90deg, #ff4081, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.scorecard {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.scorecard th,
+.scorecard td {
+  border: 1px solid #ffcc00;
+  padding: 10px;
+  text-align: center;
+}
+
+.scorecard th {
+  background: #2c2c2c;
+  color: #ffcc00;
+}
+
+.narrative {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.impact-note {
+  margin-top: 15px;
+  padding: 10px;
+  background: #2c2c2c;
+  border-radius: 10px;
+  font-size: 15px;
+  border-left: 4px solid #ff4081;
+}

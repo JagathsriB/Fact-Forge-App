@@ -1,0 +1,32 @@
+## How Natural Language Inference (NLI) Works
+
+The Natural Language Inference (NLI) check determines the logical relationship between the user's input text and the content from the top web source found. It answers the question: "Does the information in this web source support, contradict, or is it neutral to the claims made in my text?"
+
+---
+
+### 1. The Core Model
+
+This check relies on a powerful, pre-trained language model specifically designed for understanding textual relationships.
+
+* **Model:** The system uses a **`roberta-large-mnli`** model, which has been fine-tuned on the Multi-Genre Natural Language Inference (MNLI) corpus.
+
+---
+
+### 2. The NLI Process
+
+The model is presented with two pieces of text:
+
+* **Premise:** The text from the top web source.
+* **Hypothesis:** The user's input text.
+
+The model then analyzes these two texts to determine their logical connection.
+
+---
+
+### 3. The Verdicts
+
+The NLI check produces one of three possible verdicts, along with a confidence score:
+
+* **ENTAILMENT:** The information in the web source **supports or proves** the claim in the user's text.
+* **CONTRADICTION:** The information in the web source **disproves or contradicts** the claim in the user's text.
+* **NEUTRAL:** The information in the web source is on the same topic but is **not logically related** enough to either support or contradict the user's text.

@@ -1,0 +1,31 @@
+## How Plagiarism & Fact-Checking Works
+
+This system evaluates the originality of a text by searching for online sources and comparing their content semantically. It's a multi-step process designed to find the most relevant existing text and measure how similar it is to the user's input.
+
+---
+
+### 1. Keyword Extraction
+
+First, the system identifies the core concepts in the text you provide.
+
+* **Tool:** It uses **`KeyBERT`** to analyze the input and extract the most important keywords and phrases that summarize the main topic.
+
+---
+
+### 2. Web Search & Source Identification
+
+Using the extracted keywords, the system performs a targeted web search to find potential sources of the content.
+
+* **Search Engine:** A search is conducted using **DuckDuckGo** to find the top 5 most relevant online articles and pages.
+
+---
+
+### 3. Semantic Similarity Comparison
+
+Instead of just checking for exact word matches, the system analyzes the *meaning* behind the sentences.
+
+* **Model:** It uses the **`all-MiniLM-L12-v2` Sentence Transformer** model to convert both the input text and the text from the top web source into numerical representations (embeddings).
+
+* **Analysis:** By calculating the cosine similarity between these embeddings, the system determines the semantic overlap. A high score means the meaning of the sentences is very close, even if the exact wording is different.
+
+* **Verdict:** The final **Similarity Score** represents the average highest similarity found between sentences, indicating how likely the text is to be original.
