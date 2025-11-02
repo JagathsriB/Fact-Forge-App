@@ -1,0 +1,7 @@
+transformers
+torch
+tensorflow
+tf-keras
+requests
+duckduckgo-search
+python-dotenv
