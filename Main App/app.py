@@ -31,7 +31,7 @@ LOCAL_MODEL_PATH = "Vivy-0507/deberta-v3-large-bias-detection"
 
 # Initialize Flask and enable CORS
 app = Flask(__name__)
-CORS(app, origins=["httpsD://fact-forge-frontend.onrender.com"])
+CORS(app, origins=["https://fact-forge-app.onrender.com"])
 
 # Initialize bias analyzer
 analyzer = LanguageAnalyzer(local_model_path=LOCAL_MODEL_PATH, gemini_api_key=GEMINI_KEY)
